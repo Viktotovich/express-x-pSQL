@@ -1,14 +1,12 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
   <head>
-    <title>Homepage</title>
-    <link rel="stylesheet" href="/styles.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title%></title>
   </head>
   <body>
-    <%- include('../partials/navbar', {links: links}) %>
-    <ul>
-      <% users.forEach((user) => { %> <%- include('../users/user', {user: user})
-      %> <%}) %>
-    </ul>
-    <%- include("../partials/footer", {github: github}) %>
+    <h1><%= title %></h1>
+    <a href="/new">New Username</a>
   </body>
 </html>
