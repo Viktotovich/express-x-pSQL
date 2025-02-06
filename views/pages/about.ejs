@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About us</title>
+    <link rel="stylesheet" href="/about-styles.css" />
+  </head>
+  <body>
+    <%- include('navbar', {links: links})%>
+    <div class="about-us">
+      <h1>About us</h1>
+      <p>
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illo, quod
+        dolorem, quidem officia fugiat quisquam molestiae, aspernatur molestias
+        aliquam dignissimos eligendi eveniet deserunt! Ipsum impedit cum libero
+        consectetur animi nesciunt?
+      </p>
+    </div>
+    <%- include("footer", {github: github}) %>
+  </body>
+</html>
