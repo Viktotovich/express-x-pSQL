@@ -21,7 +21,21 @@ async function insertUsername(username) {
   }
 }
 
+async function findUsername(searchItem) {
+  try {
+    console.log(searchItem);
+    const { rows } = await pool.query(
+      "SELECT * FROM usernames WHERE username = $1",
+      [searchItem]
+    );
+    return rows;
+  } catch (err) {
+    console.error(err);
+  }
+}
+
 module.exports = {
   getAllUsernames,
   insertUsername,
+  findUsername,
 };

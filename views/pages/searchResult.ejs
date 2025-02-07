@@ -6,13 +6,12 @@
     <title><%= title%></title>
   </head>
   <body>
-    <h1><%= title %></h1>
+    <h1><%= title%></h1>
+    <hr />
+    <% usernames.forEach((username) => { %>
     <ul>
-      <% usernames.forEach((user) => { %>
-      <p><%= user.username%></p>
-      <%})%>
+      <li><%= username.username %>, ID: <%= username.id%></li>
     </ul>
-    <a href="/new">New Username</a>
-    <%- include("../partials/search")%>
+    <%}) %>
   </body>
 </html>
