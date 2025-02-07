@@ -3,6 +3,7 @@ const express = require("express");
 const app = express();
 const path = require("node:path");
 const newRouter = require("./routes/newRoute");
+const newController = require("./controllers/newController");
 
 const PORT = process.env.PORT;
 const assetsPath = path.join(__dirname, "public");
@@ -12,10 +13,7 @@ app.set("view engine", "ejs");
 app.use(express.static(assetsPath));
 app.use(express.urlencoded({ extended: true }));
 
-app.get("/", (req, res) => {
-  const title = "Usernames will be logged here";
-  res.render("pages/index", { title });
-});
+app.get("/", newController.getUsernames);
 
 app.use("/new", newRouter);
 

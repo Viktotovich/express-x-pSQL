@@ -1,4 +1,5 @@
 const { body, validationResult } = require("express-validator");
+const db = require("../db/queries");
 
 const alphaNumericErr = "must be either letters or numbers.";
 const lengthErr = "must be between 3 and 20 characters long.";
@@ -12,21 +13,28 @@ const validateUserName = [
     .withMessage("Username " + lengthErr),
 ];
 
-exports.newGet = (req, res) => {
+exports.getUsernames = async (req, res) => {
+  const usernames = await db.getAllUsernames();
+  const title = "All users";
+  console.dir("Usernames:", usernames);
+  res.send("Usernames: " + usernames.map((user) => user.username).join(", "));
+};
+
+exports.createUsernameGet = async (req, res) => {
   const title = "Create a new user";
   res.render("pages/new", { title });
 };
 
-exports.newPost = [
+exports.createUsernamePost = [
   validateUserName,
-  (req, res) => {
+  async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400);
     }
 
     const { username } = req.body;
-    console.log(`Username: ${username}`);
-    res.send(200);
+    await db.insertUsername(username);
+    res.redirect("/");
   },
 ];
