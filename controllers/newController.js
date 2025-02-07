@@ -16,7 +16,6 @@ const validateUserName = [
 exports.getUsernames = async (req, res) => {
   const usernames = await db.getAllUsernames();
   const title = "All users";
-  console.dir("Usernames:", usernames);
   res.render("pages/index", { usernames, title });
 };
 
