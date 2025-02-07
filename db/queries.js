@@ -1,4 +1,5 @@
 const pool = require("./pool");
+require("dotenv").config();
 
 async function getAllUsernames() {
   try {
@@ -34,8 +35,13 @@ async function findUsername(searchItem) {
   }
 }
 
+async function clearTable() {
+  await pool.query(`TRUNCATE usernames RESTART IDENTITY CASCADE`);
+}
+
 module.exports = {
   getAllUsernames,
   insertUsername,
   findUsername,
+  clearTable,
 };

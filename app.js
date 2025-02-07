@@ -5,6 +5,7 @@ const path = require("node:path");
 const newRouter = require("./routes/newRoute");
 const newController = require("./controllers/newController");
 const searchRouter = require("./routes/searchRoute");
+const deleteRouter = require("./routes/deleteRoute");
 
 const PORT = process.env.PORT;
 const assetsPath = path.join(__dirname, "public");
@@ -18,6 +19,7 @@ app.get("/", newController.getUsernames);
 
 app.use("/new", newRouter);
 app.use("/search", searchRouter);
+app.use("/delete", deleteRouter);
 
 app.listen(PORT, () => {
   console.dir(`Good Morning, Good Evening, and Good Night - on PORT ${PORT}`);
