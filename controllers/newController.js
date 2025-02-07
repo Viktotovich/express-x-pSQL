@@ -17,7 +17,7 @@ exports.getUsernames = async (req, res) => {
   const usernames = await db.getAllUsernames();
   const title = "All users";
   console.dir("Usernames:", usernames);
-  res.send("Usernames: " + usernames.map((user) => user.username).join(", "));
+  res.render("pages/index", { usernames, title });
 };
 
 exports.createUsernameGet = async (req, res) => {

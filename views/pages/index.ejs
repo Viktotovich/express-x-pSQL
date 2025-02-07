@@ -7,6 +7,11 @@
   </head>
   <body>
     <h1><%= title %></h1>
+    <ul>
+      <% usernames.forEach((user) => { %>
+      <p><%= user.username%></p>
+      <%})%>
+    </ul>
     <a href="/new">New Username</a>
   </body>
 </html>
